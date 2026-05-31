@@ -1,0 +1,14 @@
+// Auto-generated — Capacitor plugin registration
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation project(':capacitor-splash-screen')
+    implementation project(':capacitor-status-bar')
+    implementation project(':capacitor-haptics')
+    implementation project(':capacitor-app')
+}

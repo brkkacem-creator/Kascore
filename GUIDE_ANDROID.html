@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kascore — Guide Installation Android</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: #0A0A0A; color: #E8D5A0; min-height: 100vh; }
+  .hero { background: radial-gradient(ellipse at 30% 40%, rgba(201,168,76,0.15) 0%, transparent 60%), #0A0A0A; padding: 48px 24px 32px; text-align: center; }
+  .logo { width: 80px; height: 80px; border-radius: 20px; margin: 0 auto 16px; display: block; border: 2px solid rgba(201,168,76,0.3); }
+  h1 { font-size: 28px; font-weight: 800; color: #C9A84C; margin-bottom: 8px; }
+  .subtitle { color: #5A4E35; font-size: 15px; }
+  .tabs { display: flex; gap: 0; max-width: 480px; margin: 32px auto 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(201,168,76,0.2); }
+  .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; background: #111; color: #5A4E35; border: none; }
+  .tab.active { background: linear-gradient(135deg, #8B6914, #C9A84C, #F0CC6A, #C9A84C, #8B6914); color: #0A0A0A; }
+  .content { max-width: 480px; margin: 0 auto; padding: 24px; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.3s; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: #C9A84C; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 600; margin-bottom: 20px; }
+  .step { background: #111; border: 1px solid #2A2410; border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; gap: 14px; align-items: flex-start; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #8B6914, #C9A84C); color: #0A0A0A; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-body h3 { font-size: 14px; font-weight: 600; color: #E8D5A0; margin-bottom: 4px; }
+  .step-body p { font-size: 13px; color: #5A4E35; line-height: 1.5; }
+  .step-body code { background: #1A1A1A; border: 1px solid #2A2410; border-radius: 6px; padding: 2px 6px; font-size: 12px; color: #C9A84C; }
+  .tip { background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 12px 14px; margin-top: 16px; font-size: 13px; color: #8B7030; }
+  .tip strong { color: #C9A84C; }
+  .req { background: #111; border: 1px solid #2A2410; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; }
+  .req-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #1A1A1A; }
+  .req-row:last-child { border: none; }
+  .req-icon { width: 32px; text-align: center; font-size: 18px; }
+  .req-text { flex: 1; }
+  .req-name { font-size: 13px; font-weight: 600; color: #E8D5A0; }
+  .req-link { font-size: 11px; color: #C9A84C; text-decoration: none; }
+  .cmd { background: #0D0D0D; border: 1px solid #2A2410; border-radius: 10px; padding: 12px 14px; margin: 8px 0; font-family: monospace; font-size: 13px; color: #C9A84C; position: relative; overflow: hidden; }
+  .cmd::before { content: '$ '; color: #5A4E35; }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); margin: 20px 0; }
+  .highlight { border-left: 3px solid #C9A84C; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="logo.png" alt="Kascore" class="logo">
+  <h1>Kascore sur Android</h1>
+  <p class="subtitle">2 méthodes d'installation · Coupe du Monde 2026</p>
+</div>
+
+<div class="content">
+  <div class="tabs">
+    <button class="tab active" onclick="show('pwa')">📱 PWA (Rapide)</button>
+    <button class="tab" onclick="show('apk')">📦 APK (Complet)</button>
+  </div>
+</div>
+
+<!-- ══════════════ PWA ══════════════ -->
+<div class="content">
+<div id="panel-pwa" class="panel active">
+  <div class="badge">⚡ Recommandé · 30 secondes</div>
+  <p style="font-size:13px;color:#5A4E35;margin-bottom:20px">
+    La PWA s'installe comme une vraie app depuis Chrome, sans passer par le Play Store. Mises à jour automatiques, mode hors-ligne inclus.
+  </p>
+
+  <div class="step highlight">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Déploie Kascore sur Vercel</h3>
+      <p>Lance <code>LANCER_KASCORE.sh</code> puis pousse sur GitHub → Vercel. Tu obtiens une URL publique type <code>kascore.vercel.app</code></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>Ouvre l'URL dans Chrome Android</h3>
+      <p>Sur ton téléphone, ouvre <strong>Google Chrome</strong> et va sur ton URL Kascore.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>Installe depuis Chrome</h3>
+      <p>Chrome affiche automatiquement une bannière <strong>"Ajouter à l'écran d'accueil"</strong>.<br>
+      Ou : menu ⋮ → <strong>Ajouter à l'écran d'accueil</strong></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h3>L'icône Kascore apparaît 🎉</h3>
+      <p>L'app s'ouvre en plein écran, sans barre Chrome. Elle fonctionne même partiellement hors connexion.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Pourquoi la PWA ?</strong><br>
+    Mêmes fonctionnalités qu'une app native, mises à jour instantanées (pas besoin de réinstaller), et aucune démarche Play Store.
+  </div>
+</div>
+
+<!-- ══════════════ APK ══════════════ -->
+<div id="panel-apk" class="panel">
+  <div class="badge">🔧 APK natif · ~15 min de build</div>
+  <p style="font-size:13px;color:#5A4E35;margin-bottom:20px">
+    Génère un vrai fichier .apk installable directement. Nécessite Android Studio une seule fois.
+  </p>
+
+  <h3 style="font-size:13px;color:#C9A84C;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px">Prérequis</h3>
+  <div class="req">
+    <div class="req-row">
+      <div class="req-icon">☕</div>
+      <div class="req-text">
+        <div class="req-name">Java JDK 17+</div>
+        <a href="https://adoptium.net" class="req-link">adoptium.net →</a>
+      </div>
+    </div>
+    <div class="req-row">
+      <div class="req-icon">🤖</div>
+      <div class="req-text">
+        <div class="req-name">Android Studio</div>
+        <a href="https://developer.android.com/studio" class="req-link">developer.android.com/studio →</a>
+      </div>
+    </div>
+    <div class="req-row">
+      <div class="req-icon">📦</div>
+      <div class="req-text">
+        <div class="req-name">Node.js 18+</div>
+        <a href="https://nodejs.org" class="req-link">nodejs.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h3>Configure l'URL dans .env.local</h3>
+      <p>Assure-toi que <code>NEXT_PUBLIC_APP_URL</code> pointe vers ton Vercel déployé.</p>
+    </div>
+  </div>
+
+  <div class="step highlight">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h3>Lance le script de build</h3>
+      <p>Dans le dossier kascore :</p>
+      <div class="cmd">bash BUILD_APK.sh</div>
+      <p>Le script construit Next.js, sync Capacitor, et compile l'APK.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h3>Récupère kascore-android.apk</h3>
+      <p>Le fichier est créé à la racine du projet.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h3>Installe sur Android</h3>
+      <p><strong>Via USB (recommandé)</strong> — câble branché, débogage USB activé :</p>
+      <div class="cmd">adb install kascore-android.apk</div>
+      <p style="margin-top:8px"><strong>Via fichier</strong> — copie l'APK sur le téléphone et ouvre-le. Autorise les "sources inconnues" dans Paramètres → Sécurité.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <h3>Alternative : Android Studio</h3>
+      <p>Ouvre <code>android-build/</code> dans Android Studio → <strong>Run ▶</strong> pour installer directement sur le téléphone connecté.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Activer les sources inconnues :</strong><br>
+    Paramètres → Sécurité → Installer des apps inconnues → Chrome (ou Gestionnaire de fichiers) → Autoriser
+  </div>
+</div>
+</div>
+
+<script>
+function show(tab) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
